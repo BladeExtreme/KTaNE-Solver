@@ -43,13 +43,12 @@ def edgeworkCreate():
                     formatted_ind.append(clean_indicator + '*')
                 else:
                     formatted_ind.append(clean_indicator)
-
             litInd = [x for x in formatted_ind if '*' in x]
             unlitInd = [x for x in formatted_ind if '*' not in x]
             all_indicators = litInd + unlitInd
 
             valid_indicators = ['SND', 'CLR', 'CAR', 'IND', 'FRQ', 'SIG', 'NSA', 'MSA', 'TRN', 'BOB', 'FRK']
-            if all(ind in valid_indicators for ind in formatted_ind):
+            if all(ind.replace('*', '') in valid_indicators for ind in formatted_ind):
                 ind = all_indicators
                 break
     
@@ -99,7 +98,7 @@ def edgeworkCreate():
 
         sn = input(f"Serial Number: ").upper()
 
-        if not (any([a.isalpha() for a in sn]) and any([a.isdigit() for a in sn])): continue
+        if not (any(a.isalpha() for a in sn) and any(a.isdigit() for a in sn)): continue
         elif len(sn)!=6: continue
         break
     

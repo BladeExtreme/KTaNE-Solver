@@ -15,8 +15,8 @@ class ComplicatedWires(BaseSolver):
             self.local_header()
             ans = input(f"Wire Colors [Red, Blue, White, RedBlue] (Seperated with comma space): ").lower().split(', ')
 
-            if not all([a.isalpha() for a in ans]): continue
-            elif not all([a in ['red','blue','white','redblue'] for a in ans]): continue
+            if not all(a.isalpha() for a in ans): continue
+            elif not all(a in ['red','blue','white','redblue'] for a in ans): continue
             else:
                 for a in ans: self.wires.append({'c': a, 's': False, 'l': False})
                 break
@@ -26,8 +26,8 @@ class ComplicatedWires(BaseSolver):
             print(f"Wire Colors: {', '.join([a['c'].capitalize() for a in self.wires])}")
             ans = input(f"Stars on Wire (1-{len(self.wires)}, seperated with comma space): ").lower().split(', ')
 
-            if not all([a.isdigit() for a in ans]): continue
-            elif not all([int(a)-1 in range(len(self.wires)) for a in ans]): continue
+            if not all(a.isdigit() for a in ans): continue
+            elif not all(int(a)-1 in range(len(self.wires)) for a in ans): continue
             else:
                 for a in ans:
                     self.wires[int(a)-1]['s'] = True
@@ -39,8 +39,8 @@ class ComplicatedWires(BaseSolver):
             print(f"Stars on Wire: {', '.join([str(a+1) for a in range(len(self.wires)) if self.wires[a]['s']])}")
             ans = input(f"LED on Wire (1-{len(self.wires)}, seperated with comma space): ").lower().split(', ')
 
-            if not all([a.isdigit() for a in ans]): continue
-            elif not all([int(a)-1 in range(len(self.wires)) for a in ans]): continue
+            if not all(a.isdigit() for a in ans): continue
+            elif not all(int(a)-1 in range(len(self.wires)) for a in ans): continue
             else:
                 for a in ans:
                     self.wires[int(a)-1]['l'] = True

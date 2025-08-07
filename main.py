@@ -3,6 +3,7 @@ from ktanesolver.other.help import help
 from ktanesolver.other.modulelist import modulelist, MODULE_MAP
 from ktanesolver.edgework import edgeworkCreate
 from ktanesolver.patchnotes import patchnotes
+from ktanesolver.modules import ForgetMeNot
 import colorama as c #type: ignore
 
 HELP_INFO = True
@@ -14,10 +15,12 @@ OPTIONS = {
     'max_strike': 3
 }
 EDGEWORK = None
+FMN = None
+
 c.init(autoreset=True)
 
 def menu():
-    global HELP_INFO, EDGEWORK, OPTIONS
+    global HELP_INFO, EDGEWORK, OPTIONS, FMN
     while True:
         header()
         
@@ -29,6 +32,7 @@ def menu():
             print(f"Needies\t: {EDGEWORK.needy}\n")
             print(f"Solves\t: {EDGEWORK.solves}\t{c.Fore.GREEN+'[AUTOSOLVE]' if OPTIONS['autosolve'] else ''}")
             print(f"Strikes\t: {EDGEWORK.strikes}\t{c.Fore.RED+'[STRIKE TRACK]' if OPTIONS['autostrike'] else ''}\n")
+            if OPTIONS['fmn']: print(f"{c.Fore.BLUE}[FORGET ME NOT - ACTIVE]")
 
         if HELP_INFO: print("Enter '-help' to get more information.\n")
 
@@ -44,8 +48,7 @@ def menu():
         elif op_menu=='-autosolve': OPTIONS['autosolve'] = not OPTIONS['autosolve']
         elif op_menu=='-autostrike': OPTIONS['autostrike'] = not OPTIONS['autostrike']
         
-        elif op_menu == '-patchnotes':
-            patchnotes()
+        elif op_menu == '-patchnotes': patchnotes()
         
         elif EDGEWORK is not None:
             v = False
@@ -76,8 +79,27 @@ def menu():
                 elif len(temp_l)==1:
                     EDGEWORK.solve()
 
-            if op_menu in MODULE_MAP: v = MODULE_MAP[op_menu](EDGEWORK)
+            elif op_menu=='-forgetmenot':
+                if FMN is None:
+                    FMN = ForgetMeNot(EDGEWORK)
+                    OPTIONS['fmn'] = True
+                else:
+                    FMN = None
+                    OPTIONS['fmn'] = False
+
+            elif op_menu in MODULE_MAP: 
+                if op_menu=='forgetmenot' and FMN is None:
+                    continue
+                elif op_menu=='forgetmenot' and FMN is not None:
+                    if len(FMN.number)<3:
+                        FMN.error()
+                        continue
+                    else: v = FMN.solve()
+
+                else: v = MODULE_MAP[op_menu](EDGEWORK)
+
             if v and OPTIONS['autosolve']: EDGEWORK.solve()
+            if v and OPTIONS['fmn']: FMN.display()
         HELP_INFO = False
 
 if __name__=="__main__":

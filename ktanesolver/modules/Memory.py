@@ -48,8 +48,8 @@ class Memory(BaseSolver):
             print(f"Display: {self.disp}")
             ans = input(f"Label from 1st position to 4th (left to right, seperated by comma space): ").lower().split(', ')
 
-            if not all([a.isdigit() for a in ans]): continue
-            elif not all([int(a) in range(1, 5) for a in ans]): continue
+            if not all(a.isdigit() for a in ans): continue
+            elif not all(int(a) in range(1, 5) for a in ans): continue
             elif not len(set(ans))!=4: continue
             else:
                 self.button = ans

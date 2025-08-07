@@ -26,7 +26,7 @@ class SimonSays(BaseSolver):
     
     def _calculate(self):
         trades = {}
-        vowel = any([a in 'AIUEO' for a in self.eg.snletter])
+        vowel = any(a in 'AIUEO' for a in self.eg.snletter)
         
         match self.eg.strikes:
             case 0:

@@ -18,7 +18,7 @@ class Password(BaseSolver):
 
             if temp_ans == ['-'] and len(ans)>0: break
             elif len(temp_ans)!=5: continue
-            elif not all([a.isalpha() for a in temp_ans]): continue
+            elif not all(a.isalpha() for a in temp_ans): continue
             else: ans.append(temp_ans)
         
         self.local_header()

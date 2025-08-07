@@ -131,10 +131,10 @@ class Maze(BaseSolver):
             ans = input("Hints (White Circles) (Seperated by comma space, 2 coordinates): ").lower().split(', ')
 
             if len(ans)!=2: continue
-            elif not all([len(a)==2 for a in ans]): continue
-            elif not (any([a.isalpha() for a in ans[0]]) and any([a.isdigit() for a in ans[0]])) or not (any([a.isalpha() for a in ans[1]]) and any([a.isdigit() for a in ans[1]])): continue
+            elif not all(len(a)==2 for a in ans): continue
+            elif not (any(a.isalpha() for a in ans[0]) and any(a.isdigit() for a in ans[0])) or not (any(a.isalpha() for a in ans[1]) and any(a.isdigit() for a in ans[1])): continue
             elif not int(''.join([a for a in ans[0] if a.isdigit()])) in range(1,7) or not int(''.join([a for a in ans[1] if a.isdigit()])) in range(1,7): continue
-            elif not all([a in 'abcdef' for a in ans[0] if a.isalpha()]) or not all([a in 'abcdef' for a in ans[0] if a.isalpha()]): continue
+            elif not all(a in 'abcdef' for a in ans[0] if a.isalpha()) or not all(a in 'abcdef' for a in ans[0] if a.isalpha()): continue
             elif [a for a in ans[0] if a.isalpha()]==[a for a in ans[1] if a.isalpha()] and [a for a in ans[0] if a.isdigit()]==[a for a in ans[1] if a.isdigit()]: continue
             else:
                 self.hint = [
@@ -153,9 +153,9 @@ class Maze(BaseSolver):
             ans = input("Target (Red Triangle): ").lower()
 
             if len(ans)!=2: continue
-            elif not (any([a.isalpha() for a in ans]) and any([a.isdigit() for a in ans])): continue
+            elif not (any(a.isalpha() for a in ans) and any(a.isdigit() for a in ans)): continue
             elif not int(''.join([a for a in ans if a.isdigit()])) in range(1,7): continue
-            elif not all([a in 'abcdef' for a in ans if a.isalpha()]): continue
+            elif not all(a in 'abcdef' for a in ans if a.isalpha()): continue
             else:
                 self.target = {
                     'x': int(ord([a for a in ans if a.isalpha()][0]))-int(ord('a')),
@@ -171,9 +171,9 @@ class Maze(BaseSolver):
             ans = input("Player (White Square): ").lower()
 
             if len(ans)!=2: continue
-            elif not (any([a.isalpha() for a in ans]) and any([a.isdigit() for a in ans])): continue
+            elif not (any(a.isalpha() for a in ans) and any(a.isdigit() for a in ans)): continue
             elif not int(''.join([a for a in ans if a.isdigit()])) in range(1,7): continue
-            elif not all([a in 'abcdef' for a in ans if a.isalpha()]): continue
+            elif not all(a in 'abcdef' for a in ans if a.isalpha()): continue
             else:
                 self.player = {
                     'x': int(ord([a for a in ans if a.isalpha()][0]))-int(ord('a')),

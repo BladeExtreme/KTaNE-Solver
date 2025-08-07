@@ -35,8 +35,8 @@ class MorseCode(BaseSolver):
             self.local_header()
             if self.bad: print(c.Fore.RED+"NO SOLUTION"+c.Style.RESET_ALL+' - Try inputting the morse code correctly to find the correct solution')
             ans = input("Morse Code (. or -, each code seperated by space): ").lower().split(' ')
-            if not all([all([b in ['.', '-'] for b in a]) for a in ans]): continue
-            elif not all([translate(a) != -1 for a in ans]): continue
+            if not all(all([b in ['.', '-'] for b in a]) for a in ans): continue
+            elif not all(translate(a) != -1 for a in ans): continue
             else:
                 self.ans = ans
                 break

@@ -56,7 +56,7 @@ class WhosOnFirst(BaseSolver):
             ans = input("Display (With apostrophe. If it's empty, enter with no input): ").lower()
             
             if not ans.isalpha() and ans!='': continue
-            elif not any([ans in a for a in self.displist]): continue
+            elif not any(ans in a for a in self.displist): continue
             else:
                 self.dispword = ans
                 break
@@ -68,7 +68,7 @@ class WhosOnFirst(BaseSolver):
 
             ans = input("Buttons (With apostrophe. Each word is seperated with comma space): ").lower().split(', ')
             if len(ans)!=6: continue
-            elif not all([a in self.wordlist.keys() for a in ans]): continue
+            elif not all(a in self.wordlist.keys() for a in ans): continue
             elif len(set(ans))!=6: continue
             else:
                 self.buttonword = ans

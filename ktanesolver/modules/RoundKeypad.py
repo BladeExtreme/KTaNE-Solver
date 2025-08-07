@@ -1,6 +1,6 @@
 from .__basemod__ import BaseSolver
 
-class Keypad(BaseSolver):
+class RoundKeypad(BaseSolver):
     NAME = 'Keypad'
     symbollist = ['Ϙ', 'Ӭ', '©', 'б', 'Ψ', 'Ѧ', 'Ѽ', '¶', 'ټ', 'ƛ', 'Ͽ', 'Ҩ', 'Ѣ', '҂', 'Ϟ', 'Җ', 'Ѭ', 'Ͼ', 'æ', '☆', 'Ԇ', 'ϗ', '¿', 'Ѯ', 'Ҋ', '★', 'Ω']
     symboltable = [
@@ -26,18 +26,22 @@ class Keypad(BaseSolver):
             print()
             ans = input(f"Symbols (use number matching with the table above, separate with comma space): ").lower().split(', ')
 
-            if len(ans)!=4: continue
+            if len(ans)!=8: continue
             elif not all(a.isdigit() for a in ans): continue
             elif not all(int(a)-1 in range(27) for a in ans): continue
-            elif len(set([int(a)-1 for a in ans]))!=4: continue
+            elif len(set([int(a)-1 for a in ans]))!=8: continue
             else:
                 self.symbols = [self.symbollist[int(a)-1] for a in ans]
                 break
     
     def _calculate(self):
         s = self.symboltable
-        for a in s:
-            if all(b in a for b in self.symbols): return [x for x in a if x in self.symbols]
+        col = []
+
+        for a in range(len(s)):
+            col.append(len([x for x in s[a] if x in self.symbols]))
+        idx = [a for a in self.symbols if a not in s[col.index(max(col))]]
+        return idx
 
     def solve(self):
         sol = self._calculate()

@@ -8,9 +8,9 @@ def help():
 
 Before diving into the solver, you'll first need to define your edgework. To do this, simply enter the command `edgework`. Once you've set up your edgework, you can begin solving by typing the module's full name — without any apostrophes, the word "The", or spaces. Make sure to include any symbols if the module name contains them. If you ever need a list of all available module names, simply type the command `-modulelist`. 
 
-To let the solver know that the "Forget Me Not" module is present, use the command `forgetmenot on`. To deactivate it, use `forgetmenot off`. When you're ready to enter or solve the module, just type `forgetmenot`.
+To let the solver know that the "Forget Me Not" module is present, use the command `-forgetmenot` to toggle it on or off. When you're ready to enter or solve the module, just type `forgetmenot`.
 
-Similarly, if you have "The Swan" module, use `swan on` to indicate it's active. To turn it off, use `swan off`. When you're ready to enter or solve "The Swan", simply type `swan`.
+Similarly, if you have "The Swan" module, use `-swan` to toggle it on or off. When you're ready to enter or solve "The Swan", simply type `swan`.
 
 If you ever need notes to the recent changes of this solver program, type the comand `-patchnotes` to view all of the patch notes.
 

@@ -7,7 +7,7 @@ c.init(autoreset=True)
 
 class BaseSolver:
     NAME = ''
-    answer_pretext = c.Fore.GREEN+'ANSWER'+' - '
+    answer_pretext = c.Fore.GREEN+'ANSWER'+c.Style.RESET_ALL+' - '
 
     def local_header(self):
         header()
