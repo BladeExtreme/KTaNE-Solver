@@ -26,3 +26,4 @@ from .Morsematics import Morsematics
 from .ConnectionCheck import ConnectionCheck
 from .LetterKeys import LetterKeys
 from .ForgetMeNot import ForgetMeNot
+from .Astrology import Astrology

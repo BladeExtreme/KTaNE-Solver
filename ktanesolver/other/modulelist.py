@@ -29,6 +29,7 @@ MODULE_MAP = {
     'connectioncheck': m.ConnectionCheck,
     'letterkeys': m.LetterKeys,
     'forgetmenot': m.ForgetMeNot,
+    'astrology': m.Astrology
 }
 
 def modulelist():
