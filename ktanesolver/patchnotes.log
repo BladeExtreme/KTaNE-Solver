@@ -1,0 +1,23 @@
+=================================================
+KTaNE-Solver v1.1 - New Solvers, Features & Tools
+--New Features--
+1. Added solver for the following modules:
+	* Wires
+	* Wire Sequence
+	* Button
+	* Maze
+	* Password
+	* Morse Code
+2. Added Morse translation utility to support Morse Code solver logic and future Morse-related modules.
+3. Established 'BaseSolver' structure and edgework integration.
+
+--Command-line & Runtime Enhancements--
+4. Added '-solve' and '-strike' commands for manual solve/strike control during runtime.
+5. Added '-autostrike' feature to automatically subtract solves when using the '-strike' command.
+6. Added '-autosolve' feature to automatically solve modules after completing a solver.
+7. Edgework now includes 'solve()' and 'strike()' methods to handle solving and strike logic from the main menu.
+8. Updated the '-help' message: the incorrect reference to '-autostrikecalc' has been corrected to '-autostrike'.
+
+=================================================
+KTaNE-Solver v1.0 - Initial Release
+1. Released base framework and interface for solver modules.
