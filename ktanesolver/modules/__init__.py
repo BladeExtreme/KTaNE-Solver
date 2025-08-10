@@ -27,3 +27,16 @@ from .ConnectionCheck import ConnectionCheck
 from .LetterKeys import LetterKeys
 from .ForgetMeNot import ForgetMeNot
 from .Astrology import Astrology
+from .Logic import Logic
+from .MysticSquare import MysticSquare
+from .CrazyTalk import CrazyTalk
+from .AdventureGame import AdventureGame
+from .Plumbing import Plumbing
+from .CruelPianoKeys import CruelPianoKeys
+from .SafetySafe import SafetySafe
+from .Cryptography import Cryptography
+from .Chess import Chess
+from .TurnTheKeys import TurnTheKeys
+from .MouseInTheMaze import MouseInTheMaze
+
+from .Roger import Roger

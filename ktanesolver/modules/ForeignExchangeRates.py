@@ -13,7 +13,7 @@ class ForeignExchangeRates(BaseSolver):
     def display(self):
         while 1:
             self.local_header()
-            ans = input(f"Row (In order from top to bottom row. Seperate with comma space): ").upper().split(', ')
+            ans = input(f"Row (In order from top to bottom row. Separate with comma space): ").upper().split(', ')
 
             if len(ans)!=3: continue
             elif not all(a.isdigit() or a.isalpha() for a in ans): continue

@@ -66,7 +66,7 @@ class WhosOnFirst(BaseSolver):
             print(f"STAGE {self.stage} OF 3")
             print(f"Display: {self.dispword.capitalize()}")
 
-            ans = input("Buttons (With apostrophe. Each word is seperated with comma space): ").lower().split(', ')
+            ans = input("Buttons (With apostrophe. Each word is separated with comma space): ").lower().split(', ')
             if len(ans)!=6: continue
             elif not all(a in self.wordlist.keys() for a in ans): continue
             elif len(set(ans))!=6: continue

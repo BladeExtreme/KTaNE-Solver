@@ -17,7 +17,7 @@ class Semaphore(BaseSolver):
             print(f"\t        S      ")
             
             print()
-            print(f"Flag Direction (In any order. Seperate with comma space. Enter '-' to stop inputting): ")
+            print(f"Flag Direction (In any order. Separate with comma space. Enter '-' to stop inputting): ")
 
             for a in ans_list:
                 print(f"> {', '.join(a)}")

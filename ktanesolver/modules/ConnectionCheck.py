@@ -19,7 +19,7 @@ class ConnectionCheck(BaseSolver):
             self.local_header()
             for a in range(len(self.pair)):
                 print(f"{'First' if a==0 else 'Second' if a==1 else 'Third' if a==2 else 'Fourth'} Pair: {' '.join(list(map(lambda x: str(x), self.pair[a])))}")
-            ans = input(f"{'First' if len(self.pair)==0 else 'Second' if len(self.pair)==1 else 'Third' if len(self.pair)==2 else 'Fourth'} Pair [1-8] (Connection seperated with space): ").lower().split(' ')
+            ans = input(f"{'First' if len(self.pair)==0 else 'Second' if len(self.pair)==1 else 'Third' if len(self.pair)==2 else 'Fourth'} Pair [1-8] (Connection separated with space): ").lower().split(' ')
 
             if len(ans)!=2: continue
             if not all(a.isdigit() for a in ans): continue

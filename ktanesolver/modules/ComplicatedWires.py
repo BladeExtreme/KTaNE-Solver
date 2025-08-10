@@ -13,7 +13,7 @@ class ComplicatedWires(BaseSolver):
         self.wires = []
         while 1:
             self.local_header()
-            ans = input(f"Wire Colors [Red, Blue, White, RedBlue] (Seperated with comma space): ").lower().split(', ')
+            ans = input(f"Wire Colors [Red, Blue, White, RedBlue] (Separated with comma space): ").lower().split(', ')
 
             if not all(a.isalpha() for a in ans): continue
             elif not all(a in ['red','blue','white','redblue'] for a in ans): continue
@@ -24,7 +24,7 @@ class ComplicatedWires(BaseSolver):
         while 1:
             self.local_header()
             print(f"Wire Colors: {', '.join([a['c'].capitalize() for a in self.wires])}")
-            ans = input(f"Stars on Wire (1-{len(self.wires)}, seperated with comma space): ").lower().split(', ')
+            ans = input(f"Stars on Wire (1-{len(self.wires)}, separated with comma space): ").lower().split(', ')
 
             if not all(a.isdigit() for a in ans): continue
             elif not all(int(a)-1 in range(len(self.wires)) for a in ans): continue

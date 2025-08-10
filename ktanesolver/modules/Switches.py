@@ -7,7 +7,7 @@ class Switches(BaseSolver):
     def display(self):
         while 1:
             self.local_header()
-            ans = input(f"Current State [Up, Down] (In order of left to right, seperate with comma space): ").lower().split(', ')
+            ans = input(f"Current State [Up, Down] (In order of left to right, separate with comma space): ").lower().split(', ')
 
             if len(ans)!=5: continue
             elif not all(a in ['up','down'] for a in ans): continue
@@ -19,7 +19,7 @@ class Switches(BaseSolver):
         while 1:
             self.local_header()
             print(f"Current State: {', '.join(['Up' if a=='1' else 'Down' for a in bin(self.current)[2:].zfill(5)])}")
-            ans = input(f"Target State [Up, Down] (In order of left to right, seperate with comma space): ").lower().split(', ')
+            ans = input(f"Target State [Up, Down] (In order of left to right, separate with comma space): ").lower().split(', ')
 
             if len(ans)!=5: continue
             elif not all(a in ['up','down'] for a in ans): continue

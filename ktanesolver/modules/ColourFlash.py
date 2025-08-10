@@ -12,7 +12,7 @@ class ColourFlash(BaseSolver):
         self.words = []; self.colors = []
         while 1:
             self.local_header()
-            ans = input(f'Words [Red, Yellow, Green, Blue, Magenta, White] (Seperated by comma space): ').lower().split(', ')
+            ans = input(f'Words [Red, Yellow, Green, Blue, Magenta, White] (Separated by comma space): ').lower().split(', ')
 
             if not all(a.isalpha() for a in ans): continue
             elif not all(a in ['red', 'yellow', 'green', 'blue', 'magenta', 'white'] for a in ans): continue
@@ -24,7 +24,7 @@ class ColourFlash(BaseSolver):
         while 1:
             self.local_header()
             print(f"Words: {', '.join([a.capitalize() for a in self.words])}")
-            ans = input(f'Colors [Red, Yellow, Green, Blue, Magenta, White] (Seperated by comma space): ').lower().split(', ')
+            ans = input(f'Colors [Red, Yellow, Green, Blue, Magenta, White] (Separated by comma space): ').lower().split(', ')
 
             if not all(a.isalpha() for a in ans): continue
             elif not all(a in ['red', 'yellow', 'green', 'blue', 'magenta', 'white'] for a in ans): continue

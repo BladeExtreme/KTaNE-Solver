@@ -36,13 +36,28 @@ class Astrology(BaseSolver):
     def display(self):
         rcParams['toolbar'] = 'none'
 
+        if not hasattr(self, 'cached_astrology_images'):
+            self.cached_astrology_images = {}
+            for name in self.elements_list:
+                key = f"e_{name.lower()}.png"
+                path = f"ktanesolver/resources/Astrology/{key}"
+                self.cached_astrology_images[key] = mpimg.imread(path)
+            for name in self.planets_list:
+                key = f"p_{name.lower()}.png"
+                path = f"ktanesolver/resources/Astrology/{key}"
+                self.cached_astrology_images[key] = mpimg.imread(path)
+            for name in self.zodiacs_list:
+                key = f"a_{name.lower()}.png"
+                path = f"ktanesolver/resources/Astrology/{key}"
+                self.cached_astrology_images[key] = mpimg.imread(path)
+
         while 1:
-            images = ['e_fire.png', 'e_water.png', 'e_earth.png', 'e_air.png']
+            images = list(map(lambda x: f"e_{x.lower()}.png", self.elements_list))
 
             fig = plt.figure(figsize=(4, 4))
 
             for i, img_path in enumerate(images):
-                img = mpimg.imread(f"ktanesolver/resources/Astrology/{img_path}")
+                img = self.cached_astrology_images[img_path]
                 ax = fig.add_subplot(2, 2, i + 1)
                 ax.imshow(img)
                 ax.set_title(self.elements_list[i])
@@ -62,14 +77,14 @@ class Astrology(BaseSolver):
                 self.elem = list(map(lambda x: x.lower(), self.elements_list)).index(ans)
                 plt.close(fig)
                 break
-        
+
         while 1:
-            images = ['p_sun.png', 'p_moon.png', 'p_mercury.png', 'p_venus.png', 'p_mars.png', 'p_jupiter.png', 'p_saturn.png', 'p_uranus.png', 'p_neptune.png', 'p_pluto.png']
+            images = list(map(lambda x: f"p_{x.lower()}.png", self.planets_list))
 
             fig = plt.figure(figsize=(4, 6))
 
             for i in range(9):
-                img = mpimg.imread(f"ktanesolver/resources/Astrology/{images[i]}")
+                img = self.cached_astrology_images[images[i]]
                 ax = fig.add_subplot(4, 3, i + 1)
                 ax.imshow(img)
                 ax.set_title(self.planets_list[i])
@@ -78,7 +93,7 @@ class Astrology(BaseSolver):
                 ax.grid(True, color='gray', linestyle='--', linewidth=0.5)
                 ax.set_navigate(False)
 
-            img = mpimg.imread(f"ktanesolver/resources/Astrology/{images[9]}")
+            img = self.cached_astrology_images[images[9]]
             ax = fig.add_subplot(4, 3, 11)
             ax.imshow(img)
             ax.set_title(self.planets_list[9], fontsize=8)
@@ -103,14 +118,14 @@ class Astrology(BaseSolver):
                 self.planet = planet_names_lower.index(ans)
                 plt.close(fig)
                 break
-        
+
         while 1:
-            images = ['a_aries.png', 'a_taurus.png', 'a_gemini.png', 'a_cancer.png', 'a_leo.png', 'a_virgo.png', 'a_libra.png', 'a_scorpio.png', 'a_sagittarius.png', 'a_capricorn.png', 'a_aquarius.png', 'a_pisces.png']
+            images = list(map(lambda x: f"a_{x.lower()}.png", self.zodiacs_list))
 
             fig = plt.figure(figsize=(6, 6))
 
             for i in range(12):
-                img = mpimg.imread(f"ktanesolver/resources/Astrology/{images[i]}")
+                img = self.cached_astrology_images[images[i]]
                 ax = fig.add_subplot(3, 4, i + 1)
                 ax.imshow(img)
                 ax.set_title(self.zodiacs_list[i], fontsize=9)
@@ -146,7 +161,7 @@ class Astrology(BaseSolver):
         if any([a in self.elements_list[self.elem].upper() for a in self.eg.snletter]): scores+=1
         else: scores-=1
 
-        if any([a in self.planets_list[self.planet].upper() for a in self.eg.snletter]): scoers+=1
+        if any([a in self.planets_list[self.planet].upper() for a in self.eg.snletter]): scores+=1
         else: scores-=1
 
         if any([a in self.zodiacs_list[self.zodiac].upper() for a in self.eg.snletter]): scores+=1

@@ -128,7 +128,7 @@ class Maze(BaseSolver):
         while 1:
             self.local_header()
             self.show_maze()
-            ans = input("Hints (White Circles) (Seperated by comma space, 2 coordinates): ").lower().split(', ')
+            ans = input("Hints (White Circles) (Separated by comma space, 2 coordinates): ").lower().split(', ')
 
             if len(ans)!=2: continue
             elif not all(len(a)==2 for a in ans): continue

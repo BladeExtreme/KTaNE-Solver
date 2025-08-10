@@ -16,7 +16,7 @@ class WireSequence(BaseSolver):
         while 1:
             self.local_header()
             print(f"STAGE {self.STAGE} of 4")
-            ans = input("1st Wire Color & Connected To (Seperated by comma space) [Blue, Red, Black] [A, B, C]: ").lower().split(', ')
+            ans = input("1st Wire Color & Connected To (Separated by comma space) [Blue, Red, Black] [A, B, C]: ").lower().split(', ')
 
             if len(ans)!=2: continue
             elif not ans[0].isalpha() or not ans[1].isalpha(): continue
@@ -29,7 +29,7 @@ class WireSequence(BaseSolver):
             self.local_header()
             print(f"STAGE {self.STAGE} of 4")
             print(f"1st Wire Color & Connected To: {self.wire_list[0][0].capitalize()} -> {self.wire_list[0][1].capitalize()}")
-            ans = input("2nd Wire Color & Connected To (Seperated by comma space) [Blue, Red, Black] [A, B, C]: ").lower().split(', ')
+            ans = input("2nd Wire Color & Connected To (Separated by comma space) [Blue, Red, Black] [A, B, C]: ").lower().split(', ')
             if len(ans)!=2: continue
             elif not ans[0].isalpha() or not ans[1].isalpha(): continue
             elif ans[0] not in ['blue', 'red', 'black'] or ans[1] not in 'abc': continue
@@ -42,7 +42,7 @@ class WireSequence(BaseSolver):
             print(f"STAGE {self.STAGE} of 4")
             print(f"1st Wire Color & Connected To: {self.wire_list[0][0].capitalize()} -> {self.wire_list[0][1].capitalize()}")
             print(f"2nd Wire Color & Connected To: {self.wire_list[1][0].capitalize()} -> {self.wire_list[1][1].capitalize()}")
-            ans = input("3rd Wire Color & Connected To (Seperated by comma space) [Blue, Red, Black] [A, B, C]: ").lower().split(', ')
+            ans = input("3rd Wire Color & Connected To (Separated by comma space) [Blue, Red, Black] [A, B, C]: ").lower().split(', ')
             if len(ans)!=2: continue
             elif not ans[0].isalpha() or not ans[1].isalpha(): continue
             elif ans[0] not in ['blue', 'red', 'black'] or ans[1] not in 'abc': continue

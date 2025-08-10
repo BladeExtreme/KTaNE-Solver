@@ -6,7 +6,7 @@ class Wires(BaseSolver):
     def display(self):
         while 1:
             self.local_header()
-            ans = input("Wire Colors (Each wire is seperated by a comma space) [Blue, Red, Yellow, White, Black]: ").lower().split(', ')
+            ans = input("Wire Colors (Each wire is separated by a comma space) [Blue, Red, Yellow, White, Black]: ").lower().split(', ')
             if not all(a.isalpha() for a in ans): continue
             elif len(ans) not in range(3, 7): continue
             elif not all(a in ['blue','red','yellow','white', 'black'] for a in ans): continue

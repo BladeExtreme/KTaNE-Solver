@@ -11,7 +11,7 @@ class WordScramble(BaseSolver):
     def display(self):
         while 1:
             self.local_header()
-            ans = input(f"Letters (Seperated with Comma Space): ").lower().split(', ')
+            ans = input(f"Letters (Separated with Comma Space): ").lower().split(', ')
 
             if len(ans)!=6: continue
             elif not all(a.isalpha() for a in ans): continue
