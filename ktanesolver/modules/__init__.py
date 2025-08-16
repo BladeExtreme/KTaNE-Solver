@@ -40,3 +40,9 @@ from .TurnTheKeys import TurnTheKeys
 from .MouseInTheMaze import MouseInTheMaze
 
 from .Roger import Roger
+from .AccessCodes import AccessCodes
+from .TaxReturns import TaxReturns
+from .Troll import Troll
+from .NumberCipher import NumberCipher
+from .ColoredSquares import ColoredSquares
+from .DividedSquares import DividedSquares

@@ -159,6 +159,7 @@ class Edgework:
         self.needy = needy
         self.solves = 0
         self.strikes = 0
+        self.solved_modules = []
     
     def solve(self, N:int=1):
         if self.solves+N<=self.modules and self.solves+N>=0: self.solves+=N

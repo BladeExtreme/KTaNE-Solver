@@ -8,21 +8,21 @@ import colorama as c #type: ignore
 
 HELP_INFO = True
 OPTIONS = {
-    'fmn': False,
-    'swan': False,
-    'ttks': False,
+    'fmn': None,
+    'swan': None,
+    'ttks': None,
+    'troll': None,
+    'dividedsquares': None,
     'autosolve': True,
     'autostrike': True,
     'max_strike': 3,
 }
 EDGEWORK = None
-FMN = None
-TTKS = None
 
 c.init(autoreset=True)
 
 def menu():
-    global HELP_INFO, EDGEWORK, OPTIONS, FMN, TTKS
+    global HELP_INFO, EDGEWORK, OPTIONS
     while True:
         header()
         
@@ -36,7 +36,12 @@ def menu():
             print(f"Strikes\t: {EDGEWORK.strikes}\t{c.Fore.RED+'[STRIKE TRACK]' if OPTIONS['autostrike'] else ''}")
             print()
             if OPTIONS['fmn']: print(f"FORGET ME NOT - {c.Fore.YELLOW}ACTIVE")
-            if OPTIONS['ttks']: print(f"TURN THE KEYS - {c.Fore.YELLOW}ACTIVE {c.Style.RESET_ALL}| {c.Fore.GREEN if TTKS.left else c.Fore.RED}Left{c.Style.RESET_ALL}/{c.Fore.GREEN if TTKS.right else c.Fore.RED}Right")
+            if OPTIONS['ttks']: print(f"TURN THE KEYS - {c.Fore.YELLOW}ACTIVE {c.Style.RESET_ALL}| {c.Fore.GREEN if OPTIONS['ttks'].left else c.Fore.RED}Left{c.Style.RESET_ALL}/{c.Fore.GREEN if OPTIONS['ttks'].right else c.Fore.RED}Right")
+            if OPTIONS['troll']: print(f"TROLL - STAGE: {OPTIONS['troll'].stage}")
+            if OPTIONS['dividedsquares']:
+                if isinstance(OPTIONS['dividedsquares'], m.DividedSquares): print(f"DIVIDED SQUARES - HOLD ON {OPTIONS['dividedsquares'].max_solve} SOLVES")
+                else: print(f"DIVIDED SQUARES - ACTIVE")
+                
             print()
 
         if HELP_INFO: print("Enter '-help' to get more information.\n")
@@ -54,18 +59,34 @@ def menu():
         elif op_menu=='-autostrike': OPTIONS['autostrike'] = not OPTIONS['autostrike']
 
         elif op_menu=='-turnthekeys':
-            OPTIONS['ttks'] = not OPTIONS['ttks']
-            if OPTIONS['ttks']: TTKS = m.TurnTheKeys()
-            else: TTKS = None
-        elif op_menu=='-turnthekeys left' and OPTIONS['ttks']:
-            TTKS.left = not TTKS.left
+            if OPTIONS['ttks'] is None: OPTIONS['ttks'] = m.TurnTheKeys()
+            else: OPTIONS['ttks'] = None
+        elif op_menu=='-turnthekeys left' and OPTIONS['ttks']: OPTIONS['ttks'].left = not OPTIONS['ttks'].left
         elif op_menu=='-turnthekeys right' and OPTIONS['ttks']:
-            if TTKS.left: TTKS.right = not TTKS.right
+            if OPTIONS['ttks'].left: OPTIONS['ttks'].right = not OPTIONS['ttks'].right
         
+        elif op_menu[:len('-troll')] == '-troll':
+            temp_l = op_menu.split(' ')
+            if len(temp_l) == 3:
+                try:
+                    amount = int(temp_l[1])
+                    unsolve = int(temp_l[2])
+                    if amount >= EDGEWORK.modules: pass
+                    else:
+                        OPTIONS['troll'] = m.Troll(EDGEWORK, 0, amount, unsolve)
+                except ValueError: pass
+            elif len(temp_l) == 1:
+                if OPTIONS['troll'] is None: OPTIONS['troll'] = m.Troll(EDGEWORK, 0)
+                else: OPTIONS['troll'] = None
+
         elif op_menu == '-patchnotes': patchnotes()
+
+        elif op_menu == '-dividedsquares':
+            if OPTIONS['dividedsquares']: OPTIONS['dividedsquares'] = None
+            else: OPTIONS['dividedsquares'] = True
         
-        elif EDGEWORK is not None:
-            v = False
+        elif EDGEWORK:
+            v = None
 
             if op_menu[:len('-strike')] == '-strike':
                 temp_l = op_menu.split(' ')
@@ -94,29 +115,44 @@ def menu():
                     EDGEWORK.solve()
 
             elif op_menu=='-forgetmenot':
-                if FMN is None:
-                    FMN = m.ForgetMeNot(EDGEWORK)
-                    OPTIONS['fmn'] = True
-                else:
-                    FMN = None
-                    OPTIONS['fmn'] = False
+                if OPTIONS['fmn'] is None: OPTIONS['fmn'] = m.ForgetMeNot(EDGEWORK)
+                else: OPTIONS['fmn'] = None
 
             elif op_menu in MODULE_MAP: 
-                if TTKS is not None:
-                    if (op_menu in TTKS.FORBIDDEN_MOD['left'] and not TTKS.left) or (op_menu in TTKS.FORBIDDEN_MOD['right'] and not TTKS.right): continue
+                if OPTIONS['ttks']:
+                    if (op_menu in OPTIONS['ttks'].FORBIDDEN_MOD['left'] and not OPTIONS['ttks'].left) or (op_menu in OPTIONS['ttks'].FORBIDDEN_MOD['right'] and not OPTIONS['ttks'].right): continue
                 
-                if op_menu=='forgetmenot' and FMN is None:
-                    continue
-                elif op_menu=='forgetmenot' and FMN is not None:
-                    if len(FMN.number)<3:
-                        FMN.error()
-                        continue
-                    else: v = FMN.solve()
+                if op_menu=='troll' and OPTIONS['troll'] is None: continue
+                elif op_menu=='troll' and OPTIONS['troll']:
+                    OPTIONS['troll'].solve()
+                    if OPTIONS['troll'].state!=3: continue
+                elif OPTIONS['troll']:
+                    if OPTIONS['troll'].state==2 and op_menu!='troll': continue
 
-                else: v = MODULE_MAP[op_menu](EDGEWORK)
+                if op_menu=='forgetmenot' and OPTIONS['fmn'] is None: continue
+                elif op_menu=='forgetmenot' and OPTIONS['fmn']:
+                    if len(OPTIONS['fmn'].number)<3:
+                        OPTIONS['fmn'].error()
+                        continue
+                    else: v = OPTIONS['fmn'].solve()
+
+                else:
+                    v = MODULE_MAP[op_menu](EDGEWORK)
+                    EDGEWORK.solved_modules.append(v)
+                    if op_menu=='dividedsquares' and OPTIONS['dividedsquares']==True:
+                        OPTIONS['dividedsquares'] = v
+                        if OPTIONS['dividedsquares'].max_solve<EDGEWORK.solves:
+                            OPTIONS['dividedsquares'] = True
+                        continue
 
             if v and OPTIONS['autosolve']: EDGEWORK.solve()
-            if v and OPTIONS['fmn']: FMN.display()
+            if v and OPTIONS['fmn']: OPTIONS['fmn'].display()
+            if v and OPTIONS['troll']: 
+                if OPTIONS['troll'].state==1: OPTIONS['troll'].moduleSolve()
+                elif OPTIONS['troll'].state==3: OPTIONS['troll'] = None
+            if v and OPTIONS['dividedsquares']:
+                OPTIONS['dividedsquares'].moduleSolve()
+                if OPTIONS['dividedsquares'].max_solve==EDGEWORK.solves: OPTIONS['dividedsquares'] = None
         HELP_INFO = False
 
 if __name__=="__main__":

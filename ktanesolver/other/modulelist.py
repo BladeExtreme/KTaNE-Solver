@@ -41,7 +41,13 @@ MODULE_MAP = {
     'chess': m.Chess,
     'mouseinthemaze': m.MouseInTheMaze,
 
-    'roger': m.Roger
+    'roger': m.Roger,
+    'accesscodes': m.AccessCodes,
+    'taxreturns': m.TaxReturns,
+    'troll': m.Troll,
+    'numbercipher': m.NumberCipher,
+    'coloredsquares': m.ColoredSquares,
+    'dividedsquares': m.DividedSquares,
 }
 
 def modulelist():
