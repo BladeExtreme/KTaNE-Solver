@@ -40,6 +40,8 @@ MODULE_MAP = {
     'cryptography': m.Cryptography,
     'chess': m.Chess,
     'mouseinthemaze': m.MouseInTheMaze,
+    #'3dmaze': m.3DMaze,
+    'sillyslots': m.SillySlots,
 
     'roger': m.Roger,
     'accesscodes': m.AccessCodes,
