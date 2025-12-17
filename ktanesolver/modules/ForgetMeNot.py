@@ -8,6 +8,7 @@ class ForgetMeNot(BaseSolver):
     def __init__(self, edgework:Edgework):
         self.number = []
         self.eg = edgework
+        self.display()
 
     def display(self):
         while 1:

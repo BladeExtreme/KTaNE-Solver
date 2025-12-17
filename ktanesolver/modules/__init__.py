@@ -42,6 +42,7 @@ from .MouseInTheMaze import MouseInTheMaze
 from .SillySlots import SillySlots
 from .SimonStates import SimonStates
 
+from .BinaryMemory import BinaryMemory
 from .WorkingTitle import WorkingTitle
 from .Roger import Roger
 from .AccessCodes import AccessCodes

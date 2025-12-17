@@ -9,6 +9,7 @@ import colorama as c #type: ignore
 HELP_INFO = True
 OPTIONS = {
     'fmn': None,
+    'bm': None,
     'swan': None,
     'ttks': None,
     'troll': None,
@@ -101,7 +102,6 @@ def menu():
                 elif len(temp_l) == 1:
                     EDGEWORK.strike()
                     if OPTIONS['autostrike']: EDGEWORK.solve(-1)
-
             elif op_menu[:len('-solve')] == '-solve':
                 temp_l = op_menu.split(' ')
                 if len(temp_l) == 2:
@@ -113,10 +113,13 @@ def menu():
                     except ValueError: pass
                 elif len(temp_l)==1:
                     EDGEWORK.solve()
-
+            
             elif op_menu=='-forgetmenot':
                 if OPTIONS['fmn'] is None: OPTIONS['fmn'] = m.ForgetMeNot(EDGEWORK)
                 else: OPTIONS['fmn'] = None
+            elif op_menu=='-binarymemory':
+                if OPTIONS['bm'] is None: OPTIONS['bm'] = m.BinaryMemory(EDGEWORK)
+                else: OPTIONS['bm'] = None
 
             elif op_menu in MODULE_MAP: 
                 if OPTIONS['ttks']:
@@ -129,12 +132,16 @@ def menu():
                 elif OPTIONS['troll']:
                     if OPTIONS['troll'].state==2 and op_menu!='troll': continue
 
-                if op_menu=='forgetmenot' and OPTIONS['fmn'] is None: continue
-                elif op_menu=='forgetmenot' and OPTIONS['fmn']:
-                    if len(OPTIONS['fmn'].number)<3:
+                elif op_menu=='forgetmenot':
+                    if OPTIONS['fmn'] is None: continue
+                    elif len(OPTIONS['fmn'].number)<3:
                         OPTIONS['fmn'].error()
                         continue
                     else: v = OPTIONS['fmn'].solve()
+
+                elif op_menu=='binarymemory':
+                    if OPTIONS['bm'] is None: continue
+                    else: v = OPTIONS['bm'].solve()
 
                 else:
                     v = MODULE_MAP[op_menu](EDGEWORK)
@@ -147,6 +154,7 @@ def menu():
 
             if v and OPTIONS['autosolve']: EDGEWORK.solve()
             if v and OPTIONS['fmn']: OPTIONS['fmn'].display()
+            if v and OPTIONS['bm']: OPTIONS['bm'].display()
             if v and OPTIONS['troll']: 
                 if OPTIONS['troll'].state==1: OPTIONS['troll'].moduleSolve()
                 elif OPTIONS['troll'].state==3: OPTIONS['troll'] = None

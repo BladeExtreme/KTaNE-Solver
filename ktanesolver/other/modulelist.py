@@ -42,7 +42,10 @@ MODULE_MAP = {
     'mouseinthemaze': m.MouseInTheMaze,
     #'3dmaze': m.3DMaze,
     'sillyslots': m.SillySlots,
+    'simonstates': m.SimonStates,
 
+    'binarymemory': m.BinaryMemory,
+    'workingtitle': m.WorkingTitle,
     'roger': m.Roger,
     'accesscodes': m.AccessCodes,
     'taxreturns': m.TaxReturns,
@@ -50,6 +53,9 @@ MODULE_MAP = {
     'numbercipher': m.NumberCipher,
     'coloredsquares': m.ColoredSquares,
     'dividedsquares': m.DividedSquares,
+    'pathfinder': m.Pathfinder,
+    'sevenwires': m.SevenWires,
+    'amistake': m.AMistake,
 }
 
 def modulelist():
