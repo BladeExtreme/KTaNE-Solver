@@ -1,7 +1,8 @@
 from .__basemod__ import BaseSolver
+from collections import deque
 
 class Switches(BaseSolver):
-    NAME = 'Emoji Math'
+    NAME = 'Switches'
     forbidden = [4,11,15,18,19,23,24,26,28,30]
 
     def display(self):
@@ -29,11 +30,11 @@ class Switches(BaseSolver):
                 break
     
     def _calculate(self):
-        queue = [[self.current, []]]
+        queue = deque([self.current, []])
         vis = set()
 
         while 1:
-            node, path = queue.pop(0)
+            node, path = queue.popleft()
             if node==self.target: return path
             elif node in vis or node in self.forbidden: continue
 

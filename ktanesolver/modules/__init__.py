@@ -40,7 +40,9 @@ from .TurnTheKeys import TurnTheKeys
 from .MouseInTheMaze import MouseInTheMaze
 #from .3DMaze import 3DMaze
 from .SillySlots import SillySlots
+from .SimonStates import SimonStates
 
+from .WorkingTitle import WorkingTitle
 from .Roger import Roger
 from .AccessCodes import AccessCodes
 from .TaxReturns import TaxReturns
@@ -48,3 +50,6 @@ from .Troll import Troll
 from .NumberCipher import NumberCipher
 from .ColoredSquares import ColoredSquares
 from .DividedSquares import DividedSquares
+from .Pathfinder import Pathfinder
+from .SevenWires import SevenWires
+from .AMistake import AMistake
