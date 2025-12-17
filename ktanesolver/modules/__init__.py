@@ -38,6 +38,8 @@ from .Cryptography import Cryptography
 from .Chess import Chess
 from .TurnTheKeys import TurnTheKeys
 from .MouseInTheMaze import MouseInTheMaze
+#from .3DMaze import 3DMaze
+from .SillySlots import SillySlots
 
 from .Roger import Roger
 from .AccessCodes import AccessCodes
