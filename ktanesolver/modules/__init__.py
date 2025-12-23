@@ -54,3 +54,4 @@ from .DividedSquares import DividedSquares
 from .Pathfinder import Pathfinder
 from .SevenWires import SevenWires
 from .AMistake import AMistake
+from .EpelleMoiCa import EpelleMoiCa

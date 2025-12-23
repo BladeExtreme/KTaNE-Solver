@@ -56,6 +56,7 @@ MODULE_MAP = {
     'pathfinder': m.Pathfinder,
     'sevenwires': m.SevenWires,
     'amistake': m.AMistake,
+    'epellemoica': m.EpelleMoiCa,
 }
 
 def modulelist():
