@@ -47,6 +47,7 @@ MODULE_MAP = {
     'zoo': m.Zoo,
     'poetry': m.Poetry,
     'doubleoh': m.DoubleOh,
+    'alphabet': m.Alphabet,
 
     'binarymemory': m.BinaryMemory,
     'workingtitle': m.WorkingTitle,
@@ -66,6 +67,10 @@ MODULE_MAP = {
     'coloredmaze': m.ColoredMaze,
     'doubledigits': m.DoubleDigits,
     'code': m.Code,
+    'curlywires': m.CurlyWires,
+    'divisiblenumbers': m.DivisibleNumbers,
+    'primechecker': m.PrimeChecker,
+    'directionalbutton': m.DirectionalButton,
 }
 
 def modulelist():

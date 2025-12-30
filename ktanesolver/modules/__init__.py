@@ -64,3 +64,8 @@ from .ColorNumbers import ColorNumbers
 from .ColoredMaze import ColoredMaze
 from .DoubleDigits import DoubleDigits
 from .Code import Code
+from .CurlyWires import CurlyWires
+from .DivisibleNumbers import DivisibleNumbers
+from .PrimeChecker import PrimeChecker
+from .DirectionalButton import DirectionalButton
+from .Alphabet import Alphabet
