@@ -42,6 +42,10 @@ from .MouseInTheMaze import MouseInTheMaze
 from .SillySlots import SillySlots
 from .SimonStates import SimonStates
 
+from .Zoo import Zoo
+from .Poetry import Poetry
+from .DoubleOh import DoubleOh
+
 from .BinaryMemory import BinaryMemory
 from .WorkingTitle import WorkingTitle
 from .Roger import Roger
@@ -55,3 +59,8 @@ from .Pathfinder import Pathfinder
 from .SevenWires import SevenWires
 from .AMistake import AMistake
 from .EpelleMoiCa import EpelleMoiCa
+from .ColoredButtons import ColoredButtons
+from .ColorNumbers import ColorNumbers
+from .ColoredMaze import ColoredMaze
+from .DoubleDigits import DoubleDigits
+from .Code import Code

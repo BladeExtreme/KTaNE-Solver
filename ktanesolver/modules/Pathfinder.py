@@ -65,10 +65,8 @@ class Pathfinder(BaseSolver):
         bound = heuristic(tuple([0, 0]), self.grid)
         while 1:
             t = dfs(tuple([0, 0]), [], self.grid)
-            if isinstance(t, list):
-                return ', '.join(t)
-            if t == math.inf:
-                return None
+            if isinstance(t, list): return ', '.join(t)
+            if t == math.inf: return None
             bound = t
 
     def solve(self):

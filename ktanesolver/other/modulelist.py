@@ -44,6 +44,10 @@ MODULE_MAP = {
     'sillyslots': m.SillySlots,
     'simonstates': m.SimonStates,
 
+    'zoo': m.Zoo,
+    'poetry': m.Poetry,
+    'doubleoh': m.DoubleOh,
+
     'binarymemory': m.BinaryMemory,
     'workingtitle': m.WorkingTitle,
     'roger': m.Roger,
@@ -57,6 +61,11 @@ MODULE_MAP = {
     'sevenwires': m.SevenWires,
     'amistake': m.AMistake,
     'epellemoica': m.EpelleMoiCa,
+    'coloredbuttons': m.ColoredButtons,
+    'colornumbers': m.ColorNumbers,
+    'coloredmaze': m.ColoredMaze,
+    'doubledigits': m.DoubleDigits,
+    'code': m.Code,
 }
 
 def modulelist():
