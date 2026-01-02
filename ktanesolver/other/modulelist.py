@@ -48,6 +48,10 @@ MODULE_MAP = {
     'poetry': m.Poetry,
     'doubleoh': m.DoubleOh,
     'alphabet': m.Alphabet,
+    'ledgrid': m.LEDGrid,
+    'fastmath': m.FastMath,
+    'mortalkombat': m.MortalKombat,
+    'wireplacement': m.WirePlacement,
 
     'binarymemory': m.BinaryMemory,
     'workingtitle': m.WorkingTitle,
@@ -71,6 +75,13 @@ MODULE_MAP = {
     'divisiblenumbers': m.DivisibleNumbers,
     'primechecker': m.PrimeChecker,
     'directionalbutton': m.DirectionalButton,
+    'nextinline': m.NextInLine,
+    'skinnywires': m.SkinnyWires,
+    'stars': m.Stars,
+    'twords': m.TWords,
+    'twopersuasivebuttons': m.TwoPersuasiveButtons,
+    'luckydice': m.LuckyDice,
+    'constellations': m.Constellations,
 }
 
 def modulelist():

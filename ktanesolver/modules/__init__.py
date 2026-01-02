@@ -45,6 +45,11 @@ from .SimonStates import SimonStates
 from .Zoo import Zoo
 from .Poetry import Poetry
 from .DoubleOh import DoubleOh
+from .Alphabet import Alphabet
+from .LEDGrid import LEDGrid
+from .FastMath import FastMath
+from .MortalKombat import MortalKombat
+from .WirePlacement import WirePlacement
 
 from .BinaryMemory import BinaryMemory
 from .WorkingTitle import WorkingTitle
@@ -68,4 +73,10 @@ from .CurlyWires import CurlyWires
 from .DivisibleNumbers import DivisibleNumbers
 from .PrimeChecker import PrimeChecker
 from .DirectionalButton import DirectionalButton
-from .Alphabet import Alphabet
+from .NextInLine import NextInLine
+from .SkinnyWires import SkinnyWires
+from .Stars import Stars
+from .TWords import TWords
+from .TwoPersuasiveButtons import TwoPersuasiveButtons
+from .LuckyDice import LuckyDice
+from .Constellations import Constellations
