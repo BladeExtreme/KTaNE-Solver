@@ -41,7 +41,7 @@ class WirePlacement(BaseSolver):
 
     def solve(self):
         sol = self._calculate()
-        # self.local_header()
+        self.local_header()
         print(f"Guide:\n - Enter all wires' information: colors and their locations.\n - To input, write down the color first and then the 2 locations, all of them are seperated by a space.\n - To enter location, enter the 2 grid's location where the wire is in.\n - To notate the location for a wire, write the letter (column) and then the number (row).\n - Wire whose location already existed on the input before will not be accepted.\n - Acceptable colors are: [Red, Yellow, Blue, White, Black]\n - Acceptable letters are: [A, B, C, D]\n - Acceptable numbers are: [1, 2, 3, 4]\n - Example: Red A2 B2\n")
         for a in self.wires:
             print(f" > {' '.join(_.capitalize() for _ in a)}")
