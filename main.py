@@ -42,6 +42,7 @@ def menu():
             if OPTIONS['dividedsquares']:
                 if isinstance(OPTIONS['dividedsquares'], m.DividedSquares): print(f"DIVIDED SQUARES - HOLD ON {OPTIONS['dividedsquares'].max_solve} SOLVES")
                 else: print(f"DIVIDED SQUARES - ACTIVE")
+            if OPTIONS['bm']: print(f"BINARY MEMORY - {c.Fore.YELLOW}ACTIVE")
                 
             print()
 

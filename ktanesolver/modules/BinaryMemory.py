@@ -30,19 +30,32 @@ class BinaryMemory(BaseSolver):
             else:
                 self.number.append(0 if 'red' else 1)
                 break
+        self.number = [1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1]
 
     def _calculate(self):
-        pressed = []; state = 0
+        pressed = []
         for a in range(len(self.number)):
-            
-            pass
+            initial = len(pressed)
+            for b in range(4):
+                if [self.bank[self.condition][a%10][b], self.number[a]] not in pressed:
+                    pressed.append([self.bank[self.condition][a%10][b], self.number[a]])
+                    break
+                elif len([z for z in pressed if z[0]==self.bank[self.condition][a%10][b]])>=1:
+                    if([z for z in pressed if z[0]==self.bank[self.condition][a%10][b]][-1][1]!=self.number[a]):
+                        pressed.append([self.bank[self.condition][a%10][b], self.number[a]])
+                        break
+            if len(pressed)==initial: pressed.append([1, self.number[a]])    
+        return ''.join(map(lambda x: x[0], pressed))
 
     def error(self):
         print(f"{c.Fore.RED}Binary Memory has no numbers yet!")
         input()
 
     def solve(self):
-        self.local_header()
         sol = self._calculate()
+        self.local_header()
+        print(f"{self.answer_pretext}Sequence of Numbers in Fours:")
+        print(f" ", end="")
+        for a in range(len(sol)):
+            print(f"{sol[a]}", end="" if a%4!=3 else " ")
         input()
-        # print(f"{self.answer_pretext}Sequence of Numbers in Fours:")
